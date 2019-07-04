@@ -1,22 +1,37 @@
-var listElement = document.querySelector('#app ul');
+var rowElement = document.querySelector('#app tr');
+console.log(rowElement);
 var inputElement = document.querySelector('#app input');
 var buttonElement = document.querySelector('#app button');
 
-var todos = [
-    "fazer cafe",
-    "estudar java",
-    "acessar comunidade"
+var linhas = [
+    { nome:"Giulia", cor:"amarelo"},
+    { nome:"Sophia", cor:"rosa"},
+    { nome:"Gabriela", cor:"preta"}
 ];
 
 function renderTodos(){
-listElement.innerHTML = '';
+rowElement.innerHTML = '';
 
     for(todo of todos){
         var todoElement = document.createElement('li');
         var todoText = document.createTextNode(todo);
 
+        var linkElement = document.createElement('a')
+
+        linkElement.setAttribute('href' , '#');
+
+        var linkText = document.createTextNode (' Excluir')
+
+        linkElement.appendChild(linkText);
+
+         var pos = todos.indexOf(todo);
+
+         linkElement.setAttribute('onclick', 'deleteTodo('+ pos +')' );
+
         todoElement.appendChild(todoText);
-        listElement.appendChild(todoElement);
+        todoElement.appendChild(linkElement);
+
+        rowElement.appendChild(todoElement);
     }
 }
 
@@ -31,3 +46,7 @@ function addTodo(){
     renderTodos();
 }
 buttonElement.onclick = addTodo;
+function deleteTodo(pos) {
+    todos.splice(pos, 1);
+    renderTodos();
+}
