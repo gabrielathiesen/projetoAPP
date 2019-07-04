@@ -9,12 +9,13 @@ var linhas = [
     { nome:"Gabriela", cor:"preta"}
 ];
 
+/*
 function renderTodos(){
 rowElement.innerHTML = '';
 
-    for(todo of todos){
-        var todoElement = document.createElement('li');
-        var todoText = document.createTextNode(todo);
+    for (linha of linhas){
+        var linhaElement = document.createElement('');
+        var linhaText = document.createTextNode(linha);
 
         var linkElement = document.createElement('a')
 
@@ -28,25 +29,25 @@ rowElement.innerHTML = '';
 
          linkElement.setAttribute('onclick', 'deleteTodo('+ pos +')' );
 
-        todoElement.appendChild(todoText);
-        todoElement.appendChild(linkElement);
+        linhaElement.appendChild(linhaText);
+        linhaElement.appendChild(linkElement);
 
-        rowElement.appendChild(todoElement);
+        rowElement.appendChild(linhaElement);
     }
 }
 
-renderTodos();
+renderLinhas();
 
 
 function addTodo(){
-    var todoText = inputElement.value;
+    var linhaText = inputElement.value;
 
-    todos.push(todoText);
+    linhas.push(linhaText);
     inputElement.value = '';
-    renderTodos();
+    renderLinhas();
 }
-buttonElement.onclick = addTodo;
-function deleteTodo(pos) {
-    todos.splice(pos, 1);
-    renderTodos();
+buttonElement.onclick = addLinha;
+function deleteLinha(pos) {
+    linhas.splice(pos, 1);
+    renderLinhas();
 }
